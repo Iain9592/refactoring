@@ -3,7 +3,7 @@ e8b3c00 (HEAD -> main) Task 2.4: Split loops and extracted getTotalAmount and ge
 a3a15e9 Task 2.2: Extracted volume credits calculation into getVolumeCredits method
 f6b0c30 (HEAD -> main) task 2.1
 d254500 Task 2.1: Refactored StatementPrinter - extracted getAmount and getPlay methods, removed unnecessary parameters, inlined variables
-d254500 Task 1.2
+b84963b (HEAD -> main) Task 1.2
 8de434a (HEAD -> main) task 1 refactoring
 eb8c191 (HEAD -> main) Task 1.1 tests
 6c85699 commit
