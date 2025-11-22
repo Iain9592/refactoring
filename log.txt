@@ -1,3 +1,5 @@
+f6b0c30 (HEAD -> main) task 2.1
+d254500 Task 2.1: Refactored StatementPrinter - extracted getAmount and getPlay methods, removed unnecessary parameters, inlined variables
 8de434a (HEAD -> main) task 1 refactoring
 eb8c191 (HEAD -> main) Task 1.1 tests
 6c85699 commit

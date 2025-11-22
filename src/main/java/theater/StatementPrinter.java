@@ -50,7 +50,7 @@ public class StatementPrinter {
     private int totalVolumeCredits() {
         int result = 0;
         for (final Performance performance : invoice.getPerformances()) {
-            result += volumeCreditsFor(performance);
+            result += getVolumeCredits(performance);
         }
         return result;
     }
@@ -97,13 +97,18 @@ public class StatementPrinter {
         return plays.get(aPerformance.getPlayID());
     }
 
-    private int volumeCreditsFor(final Performance aPerformance) {
+    /**
+     * Calculates the volume credits for a given performance.
+     * @param performance the performance to calculate volume credits for
+     * @return the volume credits contribution from this performance
+     */
+    private int getVolumeCredits(final Performance performance) {
         int result = 0;
-        result += Math.max(aPerformance.getAudience()
+        result += Math.max(performance.getAudience()
                 - Constants.BASE_VOLUME_CREDIT_THRESHOLD, 0);
-        final Play play = getPlay(aPerformance);
+        final Play play = getPlay(performance);
         if ("comedy".equals(play.getType())) {
-            result += aPerformance.getAudience() / Constants.COMEDY_EXTRA_VOLUME_FACTOR;
+            result += performance.getAudience() / Constants.COMEDY_EXTRA_VOLUME_FACTOR;
         }
         return result;
     }
