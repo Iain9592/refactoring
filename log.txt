@@ -1,3 +1,5 @@
+b5c1818 (HEAD -> main) Task 2.3: Cleaned up frmt variable usage - inlined format variable in usd method, moved PERCENT_FACTOR division inside usd method, updated parameter name to amountCents
+a3a15e9 Task 2.2: Extracted volume credits calculation into getVolumeCredits method
 f6b0c30 (HEAD -> main) task 2.1
 d254500 Task 2.1: Refactored StatementPrinter - extracted getAmount and getPlay methods, removed unnecessary parameters, inlined variables
 8de434a (HEAD -> main) task 1 refactoring

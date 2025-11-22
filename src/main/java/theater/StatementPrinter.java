@@ -29,12 +29,12 @@ public class StatementPrinter {
             // print line for this order
             result.append(String.format("  %s: %s (%s seats)%n",
                     getPlay(performance).getName(),
-                    usd(getAmount(performance) / Constants.PERCENT_FACTOR),
+                    usd(getAmount(performance)),
                     performance.getAudience()));
         }
 
         result.append(String.format("Amount owed is %s%n",
-                usd(totalAmount() / Constants.PERCENT_FACTOR)));
+                usd(totalAmount())));
         result.append(String.format("You earned %s credits%n", totalVolumeCredits()));
         return result.toString();
     }
@@ -88,9 +88,13 @@ public class StatementPrinter {
         return result;
     }
 
-    private String usd(final int aNumber) {
-        final NumberFormat format = NumberFormat.getCurrencyInstance(Locale.US);
-        return format.format(aNumber);
+    /**
+     * Formats an amount in cents as a US dollar string.
+     * @param amountCents the amount in cents to format
+     * @return the formatted dollar string
+     */
+    private String usd(final int amountCents) {
+        return NumberFormat.getCurrencyInstance(Locale.US).format(amountCents / Constants.PERCENT_FACTOR);
     }
 
     private Play getPlay(final Performance aPerformance) {
