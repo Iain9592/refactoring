@@ -27,8 +27,8 @@ public class StatementPrinter {
 
         for (final Performance performance : invoice.getPerformances()) {
             // print line for this order
-            result.append(String.format("  %s: %s (%s seats)%n", playFor(performance).getName(),
-                    usd(playAmount(performance) / Constants.PERCENT_FACTOR), performance.getAudience()));
+            result.append(String.format("  %s: %s (%s seats)%n", getPlay(performance).getName(),
+                    usd(getAmount(performance) / Constants.PERCENT_FACTOR), performance.getAudience()));
         }
 
         result.append(String.format("Amount owed is %s%n",
@@ -40,7 +40,7 @@ public class StatementPrinter {
     private int totalAmount() {
         int result = 0;
         for (final Performance performance : invoice.getPerformances()) {
-            result += playAmount(performance);
+            result += getAmount(performance);
         }
         return result;
     }
@@ -53,8 +53,8 @@ public class StatementPrinter {
         return result;
     }
 
-    private int playAmount(final Performance aPerformance) {
-        final Play play = playFor(aPerformance);
+    private int getAmount(final Performance aPerformance) {
+        final Play play = getPlay(aPerformance);
         int result = 0;
         switch (play.getType()) {
             case "tragedy":
@@ -84,7 +84,7 @@ public class StatementPrinter {
         return format.format(aNumber);
     }
 
-    private Play playFor(final Performance aPerformance) {
+    private Play getPlay(final Performance aPerformance) {
         return plays.get(aPerformance.getPlayID());
     }
 
@@ -92,7 +92,7 @@ public class StatementPrinter {
         int result = 0;
         result += Math.max(aPerformance.getAudience()
                 - Constants.BASE_VOLUME_CREDIT_THRESHOLD, 0);
-        final Play play = playFor(aPerformance);
+        final Play play = getPlay(aPerformance);
         if ("comedy".equals(play.getType())) {
             result += aPerformance.getAudience() / Constants.COMEDY_EXTRA_VOLUME_FACTOR;
         }

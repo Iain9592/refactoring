@@ -1,0 +1,17 @@
+Task 2.1 Refactoring Steps Completed:
+
+1. Extracted switch statement into getAmount() helper method
+2. Renamed local variable thisAmount to result in getAmount() method
+3. Renamed parameter p to performance (already done in previous refactoring)
+4. Removed Play parameter from getAmount() method (method now only takes Performance)
+5. Created getPlay() helper method to retrieve Play from Performance
+6. Inlined play variable in statement() method (using getPlay() directly)
+7. Removed play parameter from getAmount() using Change Signature refactoring
+8. Inlined thisAmount variable in statement() method (calling getAmount() directly)
+
+All refactoring steps completed. Method names updated to match requirements:
+- playAmount() -> getAmount()
+- playFor() -> getPlay()
+
+Tests should still pass as functionality remains unchanged.
+
