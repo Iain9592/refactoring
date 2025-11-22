@@ -72,7 +72,7 @@ public class StatementPrinter {
     private int getAmount(final Performance performance) {
         final String type = getPlay(performance).getType();
         final int audience = performance.getAudience();
-        int result = 0;
+        int result;
         switch (type) {
             case "tragedy":
                 result = Constants.TRAGEDY_BASE_AMOUNT;
