@@ -105,8 +105,8 @@ public class StatementPrinter {
         return NumberFormat.getCurrencyInstance(Locale.US).format(amountCents / Constants.PERCENT_FACTOR);
     }
 
-    private Play getPlay(final Performance aPerformance) {
-        return plays.get(aPerformance.getPlayID());
+    private Play getPlay(final Performance performance) {
+        return plays.get(performance.getPlayID());
     }
 
     /**
@@ -115,12 +115,12 @@ public class StatementPrinter {
      * @return the volume credits contribution from this performance
      */
     private int getVolumeCredits(final Performance performance) {
+        final int audience = performance.getAudience();
         int result = 0;
-        result += Math.max(performance.getAudience()
-                - Constants.BASE_VOLUME_CREDIT_THRESHOLD, 0);
+        result += Math.max(audience - Constants.BASE_VOLUME_CREDIT_THRESHOLD, 0);
         final Play play = getPlay(performance);
         if ("comedy".equals(play.getType())) {
-            result += performance.getAudience() / Constants.COMEDY_EXTRA_VOLUME_FACTOR;
+            result += audience / Constants.COMEDY_EXTRA_VOLUME_FACTOR;
         }
         return result;
     }
