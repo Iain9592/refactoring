@@ -34,12 +34,16 @@ public class StatementPrinter {
         }
 
         result.append(String.format("Amount owed is %s%n",
-                usd(totalAmount())));
-        result.append(String.format("You earned %s credits%n", totalVolumeCredits()));
+                usd(getTotalAmount())));
+        result.append(String.format("You earned %s credits%n", getTotalVolumeCredits()));
         return result.toString();
     }
 
-    private int totalAmount() {
+    /**
+     * Calculates the total amount owed for all performances in the invoice.
+     * @return the total amount in cents
+     */
+    private int getTotalAmount() {
         int result = 0;
         for (final Performance performance : invoice.getPerformances()) {
             result += getAmount(performance);
@@ -47,7 +51,11 @@ public class StatementPrinter {
         return result;
     }
 
-    private int totalVolumeCredits() {
+    /**
+     * Calculates the total volume credits for all performances in the invoice.
+     * @return the total volume credits
+     */
+    private int getTotalVolumeCredits() {
         int result = 0;
         for (final Performance performance : invoice.getPerformances()) {
             result += getVolumeCredits(performance);
